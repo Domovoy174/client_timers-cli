@@ -6,8 +6,7 @@ import path from "path";
 import Table from "cli-table";
 
 //=============================================================================
-// const serverURI = "localhost";
-const serverURI = "185.185.68.238";
+const serverURI = "localhost";
 const serverPORT = 3330;
 //=============================================================================
 
@@ -19,8 +18,6 @@ const client = new WebSocket(`${wsProto}://${serverURI}:${serverPORT}`)
 let activeTimers = [];
 let oldTimers = [];
 
-// TODO заменить путь на путь до временных файлов в системе
-// const tempDir = path.dirname(os.tmpdir());
 const tempDir = path.dirname(process.argv[1]);
 const isWindows = os.type().match(/windows/i);
 const sessionFileName = path.normalize(path.join(tempDir, `${isWindows ? "_" : "."}sb-timers-session`));
@@ -114,9 +111,6 @@ const questionsStatusTimer = [
 ]
 //=============================================================================
 // questions for user
-
-
-
 function selectionActions() {
   inquirer.prompt(questionsSelect).then((answer) => {
     switch (answer.userAction) {
@@ -146,8 +140,6 @@ function selectionActions() {
         selectionActions();
     }
   });
-
-
 }
 //=============================================================================
 //
